@@ -1,15 +1,8 @@
 <h2 class="page-header"><%= author.name %></h2>
 <div class="btn-row">
-  <a class="btn btn-primary" href="authors/edit/<%- author.id %>/edit">Edit</a>
+  <a class="btn btn-primary" href="authors/<%- author.id %>/edit">Edit</a>
   <%- include('../partials/deleteForm.ejs', {url:`/authors/${author.id}`}) %>
 </div>
 <% if(booksByAuthor.length > 0) { %>
 <h2 class="page-header">Books By Author</h2>
-<div>
-  <% booksByAuthor.forEach(book=>{ %>
-  <a href="/books/<%= book.id %>">
-    <img src="<%= book.coverImagePath %>" height="150" width="100" />
-  </a>
-  <% }) %>
-</div>
-<% }%>
+<%- include('../partials/bookGrid.ejs',{books:booksByAuthor}) %> <% }%>
